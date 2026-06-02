@@ -2,9 +2,9 @@
   "name": "node-react-base",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is a base for a monolithic repository that consists of both Next.js and NestJS apps.",
   "keywords": [],
-  "author": "",
+  "author": "Darren Mitchell",
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
   "main": "index.js",
@@ -13,17 +13,16 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "dev": "concurrently -n types,utils,ui,api,web -c cyan,blue,magenta,green,yellow \"npm run dev -w @repo/types\" \"npm run dev -w @repo/utils\" \"npm run dev -w @repo/ui\" \"npm run dev -w @repo/api\" \"npm run dev -w @repo/web\"",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "lint": "eslint .",
+    "dev": "concurrently \"npm:dev:backend\" \"npm:dev:frontend\"",
+    "dev:backend": "cd apps/backend && npm run start:dev",
+    "dev:frontend": "cd apps/frontend && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
-    "concurrently": "^8",
+    "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.35",
     "eslint-config-prettier": "^10.1.8",
