@@ -1,4 +1,4 @@
-# Monorepo — Node · NestJS · React · Next.js · TypeScript
+# Monorepo — Node · NestJS · React · Next.js · TypeScript · PostgreSQL
 
 npm workspaces monorepo, no Turborepo required.
 
@@ -9,6 +9,7 @@ my-monorepo/
 ├── apps/
 │   ├── api/          @repo/api   — NestJS backend (port 3001)
 │   └── web/          @repo/web   — Next.js frontend (port 3000)
+├── config/           Config files
 ├── packages/
 │   ├── types/        @repo/types — shared TypeScript types
 │   ├── utils/        @repo/utils — shared utilities
@@ -58,3 +59,11 @@ Packages must be built before the apps that consume them:
 ```
 
 The `scripts/build-all.sh` script handles this automatically.
+
+## Testing
+
+### Test DB Connection
+
+```
+npx ts-node test-db.ts
+```
