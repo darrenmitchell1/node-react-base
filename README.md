@@ -65,7 +65,7 @@ npm run lint
 ### Test DB Connection
 
 ```
-docker compose down -v
+docker compose down
 
 docker compose up -d
 
