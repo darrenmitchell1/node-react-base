@@ -17,5 +17,24 @@ services:
       timeout: 5s
       retries: 5
 
+  postgres_test:
+    image: postgres:15-alpine
+    container_name: postgres_test_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_POSTGRES_TEST_USER}
+      POSTGRES_PASSWORD: ${DB_POSTGRES_TEST_PASSWORD}
+      POSTGRES_DB: ${DB_POSTGRES_TEST_NAME}
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgtestdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_POSTGRES_TEST_USER} -d ${DB_POSTGRES_TEST_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
 volumes:
   pgdata:
+  pgtestdata:
