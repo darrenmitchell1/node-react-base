@@ -1,14 +1,20 @@
-# Monorepo — Node · NestJS · React · Next.js · TypeScript · PostgreSQL
 
-npm workspaces monorepo, no Turborepo required.
+# Work In Progress
+
+Currently setting up the architecture of the app, pg db for development / testing and ensuring this all works fine before starting the business functions of this cashflow app.
+
+
+## Monorepo — Node / NestJS · React / Next.js / TypeScript / PostgreSQL
+
+Built on npm workspaces.
 
 ## Structure
 
 ```
-my-monorepo/
+node-react-cashflow/
 ├── apps/
-│   ├── api/          @repo/api   — NestJS backend (port 3001)
-│   └── web/          @repo/web   — Next.js frontend (port 3000)
+│   ├── backend/      @repo/api   — NestJS backend (port 3001)
+│   └── frontend/     @repo/web   — Next.js frontend (port 3000)
 ├── config/           Config files
 ├── packages/
 │   ├── types/        @repo/types — shared TypeScript types
@@ -36,7 +42,7 @@ my-monorepo/
 Packages must be built before the apps that consume them:
 
 ```
-@repo/types → @repo/utils → @repo/ui → @repo/api + @repo/web (parallel)
+@repo/types → @repo/utils → @repo/ui → @repo/backend + @repo/frontend (parallel)
 ```
 
 The `scripts/build-all.sh` script handles this automatically.

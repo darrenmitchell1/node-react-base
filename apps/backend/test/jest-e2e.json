@@ -3,8 +3,12 @@
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
+  "extensionsToTreatAsEsm": [".js", ".jsx", ".ts", ".tsx"],
   "transform": {
-    "^.+\\.(t|j)s$": "ts-jest"
+    "^.+\\.(c|m)?(j|t)sx?$": ["ts-jest", { "useESM": true }]
   },
-  "setupFiles": ["dotenv/config"]
+  "setupFiles": ["dotenv/config"],
+  "globals": {
+    "process.env.NODE_ENV": "test"
+  }
 }

@@ -14,8 +14,8 @@ npm run build -w @repo/ui
 
 # 2. apps can build in parallel once packages are ready
 echo "Building apps in parallel..."
-npm run build -w @repo/api &
-npm run build -w @repo/web &
+npm run build -w @repo/backend &
+npm run build -w @repo/frontend &
 wait
 
 echo "All builds complete"

@@ -1,5 +1,5 @@
 {
-  "name": "node-react-base",
+  "name": "node-react-cashflow",
   "private": true,
   "version": "1.0.0",
   "description": "This project is a base for a monolithic repository that consists of both Next.js and NestJS apps.",
