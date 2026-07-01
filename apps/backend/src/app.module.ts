@@ -8,6 +8,7 @@ import { ItemModule } from './item/item.module';
 import { StatementModule } from './statement/statement.module';
 import { ItemTransactionModule } from './item-transaction/item-transaction.module';
 import configuration from './config/configuration';
+import { pgDataSourceOptions } from './data-source';
 
 @Module({
   imports: [
@@ -15,19 +16,7 @@ import configuration from './config/configuration';
       isGlobal: true,
       load: [configuration],
     }),
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('database.host'),
-        port: configService.get<number>('database.port'),
-        username: configService.get<string>('database.username'),
-        password: configService.get<string>('database.password'),
-        database: configService.get<string>('database.name'),
-        autoLoadEntities: true,
-        synchronize: configService.get<string>('nodeEnv') !== 'production',
-      }),
-    }),
+    TypeOrmModule.forRoot(pgDataSourceOptions),
     ItemTypeModule,
     ItemModule,
     ItemTransactionModule,
