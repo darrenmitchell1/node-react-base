@@ -7,7 +7,7 @@ export class UpdateItemTypeDto extends PartialType(CreateItemTypeDto) {
     @IsNotEmpty()
     @IsString()
     @MaxLength(255)
-    // new ItemTypeNameUnique
+    // case insensitive ignoring space unique on entity
     name: string;
 
     @IsNotEmpty()

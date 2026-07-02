@@ -3,12 +3,12 @@ import { isAlphanumeric, ValidationArguments, ValidatorConstraint, ValidatorCons
 @ValidatorConstraint({ name: 'IsAlphaDash', async: false })
 export class IsAlphaDash implements ValidatorConstraintInterface {
   validate(text: string, args: ValidationArguments) {
-    return isAlphanumeric(text.replace(/[-_]/g, '')); // for async validations you must return a Promise<boolean> here
+    return isAlphanumeric(text.replace(/[-_]/g, ''));  // remove the - and _ then check if only alpha or numbers exist
 
   }
 
   defaultMessage(args: ValidationArguments) {
-    // here you can provide default error message if validation failed
-    return 'Text ($value) is too short or too long!';
+    // default error message if validation failed
+    return '$property ($value) is not in alpha dash format!';
   }
 }

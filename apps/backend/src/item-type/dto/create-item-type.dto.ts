@@ -19,7 +19,7 @@ export class CreateItemTypeDto {
     @IsNotEmpty()
     @IsString()
     @MaxLength(255)
-    // case insensitive ignoring space unique on entity check
+    // case insensitive ignoring space unique on entity
     name: string;
 
     @IsNotEmpty()
